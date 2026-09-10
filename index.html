@@ -1,73 +1,934 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Barsam.PG</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BARSAM.PG | Gaming</title>
 
     <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: black;
+            background:
+                radial-gradient(circle at 80% 10%, #101b2b 0%, transparent 30%),
+                radial-gradient(circle at 20% 80%, #0b1520 0%, transparent 35%),
+                #030303;
+
             color: white;
-            margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
         }
 
-        header {
-            text-align: center;
-            padding: 30px;
-        }
 
-        header h1 {
-            font-size: 40px;
-            margin: 0;
-        }
+        /* =========================
+           SIDEBAR
+        ========================= */
 
-        .menu {
+        .sidebar {
             position: fixed;
-            left: 20px;
-            top: 130px;
-            width: 150px;
+            left: 0;
+            top: 0;
+
+            width: 230px;
+            height: 100vh;
+
+            background: rgba(5, 5, 5, 0.92);
+            border-right: 1px solid #1d1d1d;
+
+            padding: 35px 20px;
+
+            z-index: 1000;
         }
+
+
+        .logo {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 55px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #58a6ff
+            );
+
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
 
         .menu a {
             display: block;
-            color: white;
+
+            color: #888;
             text-decoration: none;
-            border: 1px solid white;
-            padding: 15px;
+
+            padding: 16px 18px;
             margin-bottom: 10px;
-            text-align: center;
-            font-size: 18px;
+
+            border-radius: 10px;
+
+            transition: 0.25s;
         }
+
 
         .menu a:hover {
-            background-color: white;
-            color: black;
+            color: white;
+
+            background: #111820;
+
+            transform: translateX(5px);
         }
 
-        .content {
-            margin-left: 220px;
-            padding: 40px;
+
+        .menu a.active {
+            color: white;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #111c29,
+                    #080b0f
+                );
+
+            border-left: 3px solid #4da3ff;
         }
+
+
+        .sidebar-bottom {
+            position: absolute;
+
+            bottom: 25px;
+            left: 20px;
+            right: 20px;
+
+            text-align: center;
+
+            color: #444;
+            font-size: 11px;
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            margin-left: 230px;
+            padding: 35px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 500px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 60px;
+
+            border: 1px solid #171717;
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(8, 17, 27, 0.95),
+                    rgba(3, 3, 3, 0.8)
+                );
+
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 400px;
+            height: 400px;
+
+            background: #1465a0;
+
+            opacity: 0.08;
+
+            filter: blur(100px);
+
+            right: -100px;
+            top: -100px;
+
+            border-radius: 50%;
+        }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 700px;
+        }
+
+
+        .small-title {
+            color: #5caeff;
+
+            letter-spacing: 4px;
+
+            font-size: 13px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .hero h1 {
+            font-size: clamp(50px, 8vw, 100px);
+
+            line-height: 0.95;
+
+            letter-spacing: -4px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .hero h1 span {
+            color: #4da3ff;
+        }
+
+
+        .hero p {
+            color: #888;
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            max-width: 600px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .hero-button {
+            display: inline-block;
+
+            padding: 14px 25px;
+
+            border-radius: 8px;
+
+            background: #ffffff;
+
+            color: #000;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.25s;
+        }
+
+
+        .hero-button:hover {
+            background: #4da3ff;
+
+            color: white;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        section {
+            margin-top: 80px;
+        }
+
+
+        .section-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+
+        .section-header h2 {
+            font-size: 28px;
+        }
+
+
+        .section-header span {
+            color: #555;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================
+           GAME CARDS
+        ========================= */
+
+        .games {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 18px;
+        }
+
+
+        .game-card {
+            background: #0b0b0b;
+
+            border: 1px solid #1b1b1b;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+
+        .game-card:hover {
+            transform: translateY(-8px);
+
+            border-color: #31577b;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .game-image {
+            height: 150px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 40px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #050505
+                );
+        }
+
+
+        .game-info {
+            padding: 18px;
+        }
+
+
+        .game-info h3 {
+            margin-bottom: 8px;
+        }
+
+
+        .game-info p {
+            color: #666;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+
+            gap: 15px;
+        }
+
+
+        .stat {
+            padding: 25px;
+
+            background: #080808;
+
+            border: 1px solid #181818;
+
+            border-radius: 12px;
+        }
+
+
+        .stat-number {
+            font-size: 32px;
+
+            font-weight: bold;
+
+            color: #4da3ff;
+
+            margin-bottom: 8px;
+        }
+
+
+        .stat-title {
+            color: #777;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           PHOTOS
+        ========================= */
+
+        .photos {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 15px;
+        }
+
+
+        .photo-box {
+            height: 180px;
+
+            border-radius: 12px;
+
+            border: 1px solid #1c1c1c;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #101010,
+                    #060606
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #444;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+
+        .photo-box:hover {
+            border-color: #4da3ff;
+
+            color: #4da3ff;
+
+            transform: scale(1.02);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            margin-top: 100px;
+
+            padding: 30px 0;
+
+            border-top: 1px solid #151515;
+
+            text-align: center;
+
+            color: #444;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                position: fixed;
+
+                width: 100%;
+
+                height: auto;
+
+                padding: 15px;
+
+                border-right: none;
+
+                border-bottom: 1px solid #1b1b1b;
+            }
+
+
+            .logo {
+                margin-bottom: 15px;
+
+                font-size: 20px;
+            }
+
+
+            .menu {
+                display: flex;
+
+                justify-content: center;
+
+                gap: 5px;
+            }
+
+
+            .menu a {
+                padding: 9px 12px;
+
+                margin: 0;
+
+                font-size: 12px;
+            }
+
+
+            .sidebar-bottom {
+                display: none;
+            }
+
+
+            .main {
+                margin-left: 0;
+
+                padding: 20px;
+
+                padding-top: 150px;
+            }
+
+
+            .hero {
+                padding: 35px 25px;
+
+                min-height: 450px;
+            }
+
+
+            .hero h1 {
+                font-size: 55px;
+
+                letter-spacing: -3px;
+            }
+
+
+            .hero p {
+                font-size: 14px;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <header>
-        <h1>BARSAM.PG</h1>
-    </header>
 
-    <div class="menu">
-        <a href="index.html">HOME</a>
-        <a href="photos.html">PHOTOS</a>
-        <a href="gaming.html">GAMING</a>
-    </div>
+    <!-- SIDEBAR -->
 
-    <div class="content">
-        <h2>PG GAMING</h2>
-        <p>Welcome to Barsam.PG</p>
-    </div>
+    <aside class="sidebar">
+
+        <div class="logo">
+            BARSAM.PG
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="#home" class="active">
+                HOME
+            </a>
+
+            <a href="#photos">
+                PHOTOS
+            </a>
+
+            <a href="#gaming">
+                GAMING
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+            PG GAMING • 2026
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+
+        <!-- HOME -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <div class="small-title">
+                    WELCOME TO MY WORLD
+                </div>
+
+                <h1>
+                    BARSAM<span>.PG</span>
+                </h1>
+
+                <p>
+                    Gaming. Games. Moments.
+                    A personal gaming space built
+                    for players who love exploring
+                    new worlds.
+                </p>
+
+                <a href="#gaming" class="hero-button">
+                    EXPLORE GAMING
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FEATURED GAMES -->
+
+        <section>
+
+            <div class="section-header">
+
+                <h2>
+                    FEATURED
+                </h2>
+
+                <span>
+                    SELECTED GAMES
+                </span>
+
+            </div>
+
+
+            <div class="games">
+
+
+                <div class="game-card">
+
+                    <div class="game-image">
+                        🎮
+                    </div>
+
+                    <div class="game-info">
+
+                        <h3>
+                            Cyberpunk
+                        </h3>
+
+                        <p>
+                            Night City
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="game-card">
+
+                    <div class="game-image">
+                        ⚔️
+                    </div>
+
+                    <div class="game-info">
+
+                        <h3>
+                            Elden Ring
+                        </h3>
+
+                        <p>
+                            The Lands Between
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="game-card">
+
+                    <div class="game-image">
+                        🏹
+                    </div>
+
+                    <div class="game-info">
+
+                        <h3>
+                            Wildlands
+                        </h3>
+
+                        <p>
+                            Tactical Operations
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="game-card">
+
+                    <div class="game-image">
+                        🐎
+                    </div>
+
+                    <div class="game-info">
+
+                        <h3>
+                            Open World
+                        </h3>
+
+                        <p>
+                            Explore. Survive. Discover.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- STATS -->
+
+        <section>
+
+            <div class="section-header">
+
+                <h2>
+                    GAMING
+                </h2>
+
+                <span>
+                    PLAYER PROFILE
+                </span>
+
+            </div>
+
+
+            <div class="stats">
+
+
+                <div class="stat">
+
+                    <div class="stat-number">
+                        24+
+                    </div>
+
+                    <div class="stat-title">
+                        Games Played
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-number">
+                        1080P
+                    </div>
+
+                    <div class="stat-title">
+                        Gaming Setup
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-number">
+                        60
+                    </div>
+
+                    <div class="stat-title">
+                        Target FPS
+                    </div>
+
+                </div>
+
+
+                <div class="stat">
+
+                    <div class="stat-number">
+                        PG
+                    </div>
+
+                    <div class="stat-title">
+                        Player Tag
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PHOTOS -->
+
+        <section id="photos">
+
+            <div class="section-header">
+
+                <h2>
+                    PHOTOS
+                </h2>
+
+                <span>
+                    GAMING GALLERY
+                </span>
+
+            </div>
+
+
+            <div class="photos">
+
+
+                <div class="photo-box">
+                    PHOTO 01
+                </div>
+
+
+                <div class="photo-box">
+                    PHOTO 02
+                </div>
+
+
+                <div class="photo-box">
+                    PHOTO 03
+                </div>
+
+
+                <div class="photo-box">
+                    PHOTO 04
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- GAMING -->
+
+        <section id="gaming">
+
+            <div class="section-header">
+
+                <h2>
+                    GAMING
+                </h2>
+
+                <span>
+                    GAME ZONE
+                </span>
+
+            </div>
+
+
+            <div class="hero">
+
+                <div class="hero-content">
+
+                    <div class="small-title">
+                        PLAYER • GAMES • STORIES
+                    </div>
+
+                    <h1>
+                        GAME<br>
+                        <span>ON.</span>
+                    </h1>
+
+                    <p>
+                        Discover games, gaming moments,
+                        screenshots and everything
+                        inside the PG gaming universe.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            © 2026 BARSAM.PG
+            <br>
+            GAMING • CREATED BY BARSAM
+
+        </footer>
+
+
+    </main>
+
 
 </body>
 
