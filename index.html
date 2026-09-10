@@ -8,17 +8,66 @@
         body {
             background-color: black;
             color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            font-size: 40px;
+            margin: 0;
+        }
+
+        .menu {
+            position: fixed;
+            left: 20px;
+            top: 130px;
+            width: 150px;
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            border: 1px solid white;
+            padding: 15px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .menu a:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 40px;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>PG GAMING</h1>
+    <header>
+        <h1>BARSAM.PG</h1>
+    </header>
 
-    <p>Welcome to Barsam.PG</p>
+    <div class="menu">
+        <a href="index.html">HOME</a>
+        <a href="photos.html">PHOTOS</a>
+        <a href="gaming.html">GAMING</a>
+    </div>
 
-    <h2>Gaming Gallery</h2>
+    <div class="content">
+        <h2>PG GAMING</h2>
+        <p>Welcome to Barsam.PG</p>
+    </div>
 
 </body>
 
